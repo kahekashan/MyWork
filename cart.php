@@ -21,61 +21,124 @@ for($i=0;$i<$total_products;$i++)
 	$_SESSION['current_bag'] .= $new_string;
 	
 }
-  
+
 }
 
+
+
 if($_REQUEST['mode'] == "delete")
-//echo "hellllo";
+
 	 $_SESSION['current_bag'] ;
 	$getremove = "|".$_REQUEST['cdd']."|".$_REQUEST['qd'].",".$_REQUEST['price_dimension']."|".$_REQUEST['cdd']."|**";
 	//echo $getremove;
 	$_SESSION['current_bag'] = str_replace($getremove,'', $_SESSION['current_bag']); ;
 	
-	//$_SESSION['current_bag'] = str_replace(("|$cdd|$qd|$cdd|**"), "", $_SESSION['current_bag']); 
 	
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>:: Techno Industrial Packings ::</title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title><?php echo $title ;?></title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script  language="javascript" src="js/main_js.js"></script>
 <link rel="stylesheet" href="css/style-h.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/slide.css" type="text/css" media="screen" />
-
-
-
-
+<link rel="stylesheet" type="text/css" href="css/indexstyle.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/chrometheme/chromestyle.css" media="screen" />
+<!-- PNG FIX for IE6 -->
+<!-- http://24ways.org/2007/supersleight-transparent-png-in-ie6 -->
+<!--[if lte IE 6]>
+		<script type="text/javascript" src="js/pngfix/supersleight-min.js"></script>
+	<![endif]-->
+<!-- jQuery - the core -->
 <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
 <!-- Sliding effect -->
 <script src="js/slide.js" type="text/javascript"></script>
 <script  language="javascript" src="js/main_js.js"></script>
+<script language="javascript" src="js/jquery-1.2.6.min.js"></script>
+<script>
+$(function() {
+	$('#show').click(function() {
+		$('#square').slideDown(500);
+		$(this).fadeOut(500);
+		$('#hide').fadeIn(500);
+	});
+	$('#hide').click(function() {
+		$('#square').slideUp(500);
+		$(this).fadeOut(500);
+		$('#show').fadeIn(500);
+
+	});
+
+});
 
 
+</script>
 
-
-
-
+<script language="javascript" type="text/javascript" src="js/fadeeffect.js"></script>
 </head>
-
 <body>
+<div id="container">
+<div id="wrap">
+<div id="header">
+<div id="logo"><a href="index.php"><img src="images/logo.jpg" width="250" height="56" border="0" /></a></div>
+<div id="navigation">
+<div align="right" id="naveigtop" style="margin-top:10px;"> 
+<span class="cart"><i style="font-family:Arial, Helvetica, sans-serif; font-size:17px; color:#F00;">Y</i>our <i style="font-family:Arial, Helvetica, sans-serif; font-size:17px; color:#F00;">C</i>art<span>&nbsp;<?php echo $_SESSION['tot']; ?>&nbsp;</span><a href="cart.php" ><img src="images/carticon1.jpg" width="44" height="43" align="absmiddle" /></a>&nbsp;<a href="login.php" ><img src="images/checkout.jpg" width="118" height="30" align="absmiddle" /></a></span>
+</div><div align="right">
+<strong>Hello
+<?php if($_SESSION['loginUser']!='') echo $_SESSION['loginUser']; else echo "Guest";  ?>
+</strong>
+<?php if($_SESSION['loginUser']!='') 
+					{
+					?>
+			
+			    <a  href="index.php?lout_val=lo11out">Log out </a>
+				 <a id="close" style="display: none;" class="close" href="#">Close Panel</a>	
+					<?php } ?></div>
+<div id="menu">
+<div class="chromestyle" id="chromemenu">
+<ul>
+<li class="space"><a href="index.php">Home</a></li>
+<li><a href="about_us.php">About Us</a></li>
+<li><a href="product_gallery.php">Product Gallery</a></li>
+<li><a href="specifications.php">Specifications</a></li>
+<li><a href="promoters.php">Promoters</a></li>
+<li><a href="contact_us.php">Contact Us</a></li>		
+</ul>
+</div>
 
+</div>
 
-
-
-
+</div>
+</div>
 <!--header end-->
 
-
-<!--banner end-->
-
-
-
-
-
- <form name="cart_form" id="cart_form" action="#" method="get">
+<div id="banner" class="clearboth">
+<div id="bannerani">
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="710" height="236" accesskey="banner" title="banner">
+    <param name="movie" value="banner.swf" />
+    <param name="wmode" value="transparent" />
+    <param name="quality" value="high" />
+    <embed src="banner.swf" quality="high" wmode="transparent" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="710" height="236" ></embed>
+  </object>
+</div>
+<div id="bannertxt">
+<p class="bannerhead"><img src="images/bannertxt1.gif" width="156" height="107" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+  <area shape="rect" coords="59,86,156,107" href="product_gallery.php" />
+</map>
+</p>
+<br />
+<p class="bannerhead"><img src="images/bannertxt2.gif" width="156" height="107" border="0" usemap="#Map" />
+<map name="Map" id="Map">
+  <area shape="rect" coords="59,86,156,107" href="product_gallery.php" />
+</map>
+</p>
+</div>
+</div>
+       <form name="cart_form" id="cart_form" action="#" method="get">
 <table width="100%" border="0">
 
   <tr>
@@ -112,7 +175,8 @@ if($_REQUEST['mode'] == "delete")
 				$all_products = explode("**",$_SESSION['current_bag']); 
 				$total = count($all_products) - 1;
 				//echo $_SESSION['current_bag'];
-				
+				 $_SESSION['tot']=number_format($total);
+				 //echo $_SESSION['tot'];
 				$k = 0;
 				$item_total = 0;
 				for($i=0;$i<$total;$i++)
@@ -137,7 +201,7 @@ if($_REQUEST['mode'] == "delete")
 					//echo $srt;
 					//echo $subtotal;
 					$item_total += $subtotal;
-				 $_SESSION['tot']=number_format($total);
+				
 			 
 				?>
            					<input type="hidden" id="<?php echo 'quantity_stock'.$k; ?>" value=<?php echo $quantity_stk; ?> >
@@ -151,7 +215,7 @@ if($_REQUEST['mode'] == "delete")
 					
 						"; ?></td>
                               <td align="left" valign="top"><?php echo $details[1]; ?></td>
-                              <td align="left" valign="top"><select name="quantity<?php echo $k; ?>" id="quantity<?php echo $k; ?>" onchange="this.form.submit()" >
+                              <td align="left" valign="top"><select name="quantity<?php echo $k; ?>" id="quantity<?php echo $k; ?>" onchange="return func_stock('<?php echo $k ?>','<?php echo $quantity_stk; ?>')" >
                                   <?php for($qi=1;$qi<=10;$qi++) { ?>
                                   <option 
 						value="<?php echo $qi; ?>"
@@ -238,7 +302,10 @@ if($_REQUEST['mode'] == "delete")
 		}		       
 		else
 			echo "<td height='500' valign='middle' align='center' ><strong style='font-size:'>Your cart bag is currently empty</strong></td>";
-			
+			if($_SESSION['current_bag'] == "")
+			{
+			$_SESSION['tot']="";
+			}
 		?>
         </tr>
     </table>
@@ -248,7 +315,5 @@ if($_REQUEST['mode'] == "delete")
     </td>
   </tr>
 </table>
-
- </form>
 </body>
 </html>
